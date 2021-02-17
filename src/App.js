@@ -1,11 +1,14 @@
 import "assets/scss/style.scss";
+import LandingPage from "pages/LandingPage";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 function App() {
   return (
-    <div>
-      <p>Hello World</p>
-      <h2>Hello</h2>
-    </div>
+    <Router>
+      <Switch>
+        <Route path="/" component={LandingPage}></Route>
+      </Switch>
+    </Router>
   );
 }
 
