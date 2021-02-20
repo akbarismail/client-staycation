@@ -3,6 +3,8 @@ import landingPage from "json/landingPage.json";
 import Hero from "parts/Hero";
 import MostPicked from "parts/MostPicked";
 import Categories from "parts/Categories";
+import Testimony from "parts/Testimony";
+import Footer from "parts/Footer";
 const { default: Header } = require("parts/Header");
 
 const LandingPage = ({ location }) => {
@@ -18,7 +20,9 @@ const LandingPage = ({ location }) => {
           data={landingPage.mostPicked}
         />
         <Categories data={landingPage.categories} />
+        <Testimony data={landingPage.testimonial} />
       </main>
+      <Footer />
     </>
   );
 };

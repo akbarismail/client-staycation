@@ -14,7 +14,7 @@ const MostPicked = ({ data, refMostPicked }) => {
             >
               <div className="card card-featured">
                 <div className="tag">
-                  ${item.price}
+                  Rp.{item.price}
                   <span>/{item.unit}</span>
                 </div>
                 <figure className="img-wrapper">
