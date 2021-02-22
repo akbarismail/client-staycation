@@ -1,12 +1,20 @@
 import React, { useState } from "react";
-import InputNumber from "components/Form/InputNumber";
+import { InputDate } from "components/Form";
 
 const Example = () => {
-  const [inputValue, setInputValue] = useState({ value: "1" });
+  const [inputValue, setInputValue] = useState({
+    value: {
+      startDate: new Date(),
+      endDate: new Date(),
+      key: "selection",
+    },
+  });
 
   const handleChange = (event) => {
     setInputValue({ [event.target.name]: event.target.value });
   };
+
+  console.log(inputValue.value);
 
   return (
     <div className="container">
@@ -15,10 +23,7 @@ const Example = () => {
         style={{ height: "100vh" }}
       >
         <div className="col-auto">
-          <InputNumber
-            suffix=" night"
-            isSuffixPlural
-            max={30}
+          <InputDate
             name="value"
             value={inputValue.value}
             onChange={handleChange}
