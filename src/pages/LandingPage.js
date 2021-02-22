@@ -5,7 +5,7 @@ import MostPicked from "parts/MostPicked";
 import Categories from "parts/Categories";
 import Testimony from "parts/Testimony";
 import Footer from "parts/Footer";
-const { default: Header } = require("parts/Header");
+import Header from "parts/Header";
 
 const LandingPage = ({ location }) => {
   const refMostPicked = createRef();
