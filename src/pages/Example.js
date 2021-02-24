@@ -1,20 +1,10 @@
-import React, { useState } from "react";
-import { InputDate } from "components/Form";
+const { default: Breadcrumb } = require("components/Breadcrumb");
 
 const Example = () => {
-  const [inputValue, setInputValue] = useState({
-    value: {
-      startDate: new Date(),
-      endDate: new Date(),
-      key: "selection",
-    },
-  });
-
-  const handleChange = (event) => {
-    setInputValue({ [event.target.name]: event.target.value });
-  };
-
-  console.log(inputValue.value);
+  const breadcrumbList = [
+    { pageTitle: "Home", pageHref: "" },
+    { pageTitle: "House Details", pageHref: "" },
+  ];
 
   return (
     <div className="container">
@@ -23,11 +13,7 @@ const Example = () => {
         style={{ height: "100vh" }}
       >
         <div className="col-auto">
-          <InputDate
-            name="value"
-            value={inputValue.value}
-            onChange={handleChange}
-          />
+          <Breadcrumb data={breadcrumbList} />
         </div>
       </div>
     </div>

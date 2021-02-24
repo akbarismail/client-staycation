@@ -1,11 +1,11 @@
 import Fade from "react-reveal/Fade";
 import Button from "components/Button";
 
-const Categories = (props) => {
-  return props.data.map((category, index1) => {
+const Categories = ({ data }) => {
+  return data.map((category, index1) => {
     return (
-      <Fade bottom>
-        <section className="container" key={`category-${index1}`}>
+      <Fade bottom key={`category-${index1}`}>
+        <section className="container">
           <h4 className="mb-3 font-weight-medium">{category.name}</h4>
           <div className="container-grid">
             {category.items.length === 0 ? (
@@ -17,11 +17,12 @@ const Categories = (props) => {
             ) : (
               category.items.map((item, index2) => {
                 return (
-                  <div
-                    className="item column-3 row-1"
+                  <Fade
+                    bottom
+                    delay={300 * index2}
                     key={`category-item-${index2}`}
                   >
-                    <Fade bottom delay={300 * index2}>
+                    <div className="item column-3 row-1">
                       <div className="card">
                         {item.isPopular && (
                           <div className="tag">
@@ -49,8 +50,8 @@ const Categories = (props) => {
                           </span>
                         </div>
                       </div>
-                    </Fade>
-                  </div>
+                    </div>
+                  </Fade>
                 );
               })
             )}

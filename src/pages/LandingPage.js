@@ -1,4 +1,4 @@
-import React, { createRef } from "react";
+import React, { createRef, useEffect } from "react";
 import landingPage from "json/landingPage.json";
 import Hero from "parts/Hero";
 import MostPicked from "parts/MostPicked";
@@ -9,6 +9,11 @@ import Header from "parts/Header";
 
 const LandingPage = ({ location }) => {
   const refMostPicked = createRef();
+
+  useEffect(() => {
+    window.title = "Home Page";
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <>

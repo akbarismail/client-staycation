@@ -9,11 +9,10 @@ const MostPicked = ({ data, refMostPicked }) => {
         <div className="container-grid">
           {data.map((item, index) => {
             return (
-              <div
-                key={`mostpicked-${index}`}
-                className={`item column-4 ${index === 0 ? "row-2" : "row-1"}`}
-              >
-                <Fade bottom delay={500 * index}>
+              <Fade bottom delay={300 * index} key={`mostpicked-${index}`}>
+                <div
+                  className={`item column-4 ${index === 0 ? "row-2" : "row-1"}`}
+                >
                   <div className="card card-featured">
                     <div className="tag">
                       Rp.{item.price}
@@ -30,7 +29,7 @@ const MostPicked = ({ data, refMostPicked }) => {
                       <Button
                         className="stretched-link d-block text-white"
                         type="link"
-                        href={`/properties/${item._id}`}
+                        href={`/details/${item._id}`}
                       >
                         <h5>{item.name}</h5>
                       </Button>
@@ -39,8 +38,8 @@ const MostPicked = ({ data, refMostPicked }) => {
                       </span>
                     </div>
                   </div>
-                </Fade>
-              </div>
+                </div>
+              </Fade>
             );
           })}
         </div>
