@@ -1,8 +1,10 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
+import { object, func } from "prop-types";
 import Fade from "react-reveal/Fade";
+
 import Button from "components/Button";
 import { InputNumber, InputDate } from "components/Form";
-import { object, func } from "prop-types";
 
 export class BookingForm extends Component {
   constructor(props) {
@@ -63,12 +65,21 @@ export class BookingForm extends Component {
   }
 
   startBooking = () => {
+    const { data } = this.state;
+    this.props.startBooking({
+      _id: this.props.itemDetails._id,
+      duration: data.duration,
+      date: {
+        startDate: data.date.startDate,
+        endDate: data.date.endDate,
+      },
+    });
     this.props.history.push("/checkout");
   };
 
   render() {
     const { data } = this.state;
-    const { itemDetails, startBooking } = this.props;
+    const { itemDetails } = this.props;
 
     return (
       <Fade bottom>
@@ -113,7 +124,7 @@ export class BookingForm extends Component {
             hasShadow
             isPrimary
             isBlock
-            onClick={startBooking}
+            onClick={this.startBooking}
           >
             Continue to Book
           </Button>
@@ -128,4 +139,4 @@ BookingForm.propTypes = {
   startBooking: func,
 };
 
-export default BookingForm;
+export default withRouter(BookingForm);

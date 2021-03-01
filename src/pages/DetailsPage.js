@@ -1,4 +1,6 @@
 import { useEffect } from "react";
+import { connect } from "react-redux";
+
 import ItemDetails from "json/itemDetails.json";
 import BookingForm from "parts/BookingForm";
 import Categories from "parts/Categories";
@@ -7,10 +9,14 @@ import Footer from "parts/Footer";
 import PageDetailDescription from "parts/PageDetailDescription";
 import Testimony from "parts/Testimony";
 
+import { checkoutBooking } from "store/actions/checkout";
+
 const { default: Header } = require("parts/Header");
 const { default: PageDetailTitle } = require("parts/PageDetailTitle");
 
-const DetailsPage = ({ location }) => {
+const DetailsPage = (props) => {
+  const { location, checkoutBooking } = props;
+
   const breadcrumbList = [
     { pageTitle: "Home", pageHref: "" },
     { pageTitle: "House Details", pageHref: "" },
@@ -33,7 +39,10 @@ const DetailsPage = ({ location }) => {
               <PageDetailDescription data={ItemDetails} />
             </div>
             <div className="col-5">
-              <BookingForm itemDetails={ItemDetails} />
+              <BookingForm
+                itemDetails={ItemDetails}
+                startBooking={checkoutBooking}
+              />
             </div>
           </div>
         </section>
@@ -45,4 +54,8 @@ const DetailsPage = ({ location }) => {
   );
 };
 
-export default DetailsPage;
+const mapStateProps = (state) => ({
+  page: state.page,
+});
+
+export default connect(mapStateProps, { checkoutBooking })(DetailsPage);

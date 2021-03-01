@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
+import { connect } from "react-redux";
 import Fade from "react-reveal/Fade";
+
 import ItemDetails from "json/itemDetails.json";
 import Header from "parts/Header";
 import BookingInformation from "parts/Checkout/BookingInformation";
@@ -12,7 +14,9 @@ import Meta from "components/Stepper/Meta";
 import Controller from "components/Stepper/Controller";
 import Button from "components/Button";
 
-const Checkout = ({ location }) => {
+const Checkout = (props) => {
+  const { location, checkout } = props;
+
   const [InputForm, setInputForm] = useState({
     data: {
       firstName: "",
@@ -34,11 +38,12 @@ const Checkout = ({ location }) => {
     });
   };
 
-  const { data } = InputForm;
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    document.title = "Staycation | Checkout";
+  }, []);
 
-  const checkout = {
-    duration: 3,
-  };
+  const { data } = InputForm;
 
   const steps = {
     bookingInformation: {
@@ -72,10 +77,24 @@ const Checkout = ({ location }) => {
     },
   };
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-    document.title = "Staycation | Checkout";
-  }, []);
+  if (!checkout)
+    return (
+      <div className="container">
+        <div
+          className="row align-items-center justify-content-center text-center"
+          style={{ height: "100vh" }}
+        >
+          <div className="col-3">
+            Pilih Kamar Terlebih Dahulu
+            <div>
+              <Button className="btn mt-5" type="link" href="/" isLight>
+                Back
+              </Button>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
 
   return (
     <>
@@ -177,4 +196,8 @@ const Checkout = ({ location }) => {
   );
 };
 
-export default Checkout;
+const mapStateProps = (state) => ({
+  checkout: state.checkout,
+});
+
+export default connect(mapStateProps)(Checkout);
