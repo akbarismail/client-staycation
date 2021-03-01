@@ -20,7 +20,11 @@ const MostPicked = ({ data, refMostPicked }) => {
                     </div>
                     <figure className="img-wrapper">
                       <img
-                        src={item.imageUrl}
+                        src={
+                          item.imageId[0]
+                            ? `${process.env.REACT_APP_HOST}/${item.imageId[0].imageUrl}`
+                            : ""
+                        }
                         alt={`img-${item.name}`}
                         className="img-cover"
                       />
@@ -31,7 +35,7 @@ const MostPicked = ({ data, refMostPicked }) => {
                         type="link"
                         href={`/details/${item._id}`}
                       >
-                        <h5>{item.name}</h5>
+                        <h5>{item.title}</h5>
                       </Button>
                       <span>
                         {item.city}, {item.country}

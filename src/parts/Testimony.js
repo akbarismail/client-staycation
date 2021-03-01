@@ -15,7 +15,7 @@ const Testimony = ({ data }) => {
             >
               <figure>
                 <img
-                  src={data.imageUrl}
+                  src={`${process.env.REACT_APP_HOST}/${data.imageUrl}`}
                   alt={`img-${data.name}`}
                   className="position-absolute"
                   style={{ zIndex: 1 }}
