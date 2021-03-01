@@ -17,7 +17,7 @@ const DetailsPage = ({ location }) => {
   ];
 
   useEffect(() => {
-    window.title = "Details Page";
+    document.title = "Staycation | Details Page";
     window.scrollTo(0, 0);
   }, []);
 

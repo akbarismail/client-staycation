@@ -11,7 +11,7 @@ const LandingPage = ({ location }) => {
   const refMostPicked = createRef();
 
   useEffect(() => {
-    window.title = "Home Page";
+    document.title = "Staycation | Home Page";
     window.scrollTo(0, 0);
   }, []);
 

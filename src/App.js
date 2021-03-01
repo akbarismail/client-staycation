@@ -1,7 +1,7 @@
+import Checkout from "pages/Checkout";
 import DetailsPage from "pages/DetailsPage";
 import LandingPage from "pages/LandingPage";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-
 import "assets/scss/style.scss";
 
 function App() {
@@ -10,6 +10,7 @@ function App() {
       <Switch>
         <Route exact path="/" component={LandingPage}></Route>
         <Route path="/details/:id" component={DetailsPage}></Route>
+        <Route path="/checkout" component={Checkout}></Route>
       </Switch>
     </Router>
   );

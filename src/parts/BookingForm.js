@@ -62,6 +62,10 @@ export class BookingForm extends Component {
     }
   }
 
+  startBooking = () => {
+    this.props.history.push("/checkout");
+  };
+
   render() {
     const { data } = this.state;
     const { itemDetails, startBooking } = this.props;

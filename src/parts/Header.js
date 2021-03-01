@@ -2,10 +2,25 @@ import Button from "components/Button";
 import BrandIcon from "./IconText";
 import Fade from "react-reveal/Fade";
 
-const Header = ({ location }) => {
+const Header = ({ location, isCentered }) => {
   const getNavLink = (path) => {
     return location.pathname === path ? " active" : "";
   };
+
+  if (isCentered)
+    return (
+      <Fade>
+        <header className="spacing-sm">
+          <div className="container">
+            <nav className="navbar navbar-expand-lg navbar-light">
+              <Button type="link" href="/" className="brand-text-icon mx-auto">
+                Stay<span className="text-gray-900">cation.</span>
+              </Button>
+            </nav>
+          </div>
+        </header>
+      </Fade>
+    );
 
   return (
     <header className="spacing-sm">
