@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { oneOfType, func, number, string } from "prop-types";
 
 const File = ({
@@ -14,6 +14,18 @@ const File = ({
 }) => {
   const refInputFile = useRef(null);
 
+  const [FileName, setFileName] = useState("");
+
+  const handleChange = (event) => {
+    setFileName(event.target.value);
+    onChange({
+      target: {
+        name: event.target.name,
+        value: event.target.files,
+      },
+    });
+  };
+
   return (
     <div className={["input-text mb-3", outerClassName].join(" ")}>
       <div className="input-group">
@@ -28,11 +40,11 @@ const File = ({
           name={name}
           className="d-none"
           type="file"
-          value={value}
-          onChange={onChange}
+          value={FileName}
+          onChange={handleChange}
         />
         <input
-          defaultValue={value}
+          defaultValue={FileName}
           placeholder={placeholder}
           className={["form-control", inputClassName].join(" ")}
           onClick={() => refInputFile.current.click()}

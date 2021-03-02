@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import Fade from "react-reveal/Fade";
 
-import ItemDetails from "json/itemDetails.json";
 import Header from "parts/Header";
 import BookingInformation from "parts/Checkout/BookingInformation";
 import Payment from "parts/Checkout/Payment";
@@ -14,8 +13,10 @@ import Meta from "components/Stepper/Meta";
 import Controller from "components/Stepper/Controller";
 import Button from "components/Button";
 
+import { submitBooking } from "store/actions/checkout";
+
 const Checkout = (props) => {
-  const { location, checkout } = props;
+  const { location, checkout, page, history } = props;
 
   const [InputForm, setInputForm] = useState({
     data: {
@@ -29,6 +30,11 @@ const Checkout = (props) => {
     },
   });
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    document.title = "Staycation | Checkout";
+  }, []);
+
   const onChange = (event) => {
     setInputForm({
       data: {
@@ -38,43 +44,25 @@ const Checkout = (props) => {
     });
   };
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-    document.title = "Staycation | Checkout";
-  }, []);
-
   const { data } = InputForm;
 
-  const steps = {
-    bookingInformation: {
-      title: "Booking Information",
-      description: "Please fill up the blank fields below",
-      content: (
-        <BookingInformation
-          data={data}
-          checkout={checkout}
-          itemDetails={ItemDetails}
-          handleChange={onChange}
-        />
-      ),
-    },
-    payment: {
-      title: "Payment",
-      description: "Kindly follow the instructions below",
-      content: (
-        <Payment
-          data={data}
-          itemDetails={ItemDetails}
-          checkout={checkout}
-          handleChange={onChange}
-        />
-      ),
-    },
-    completed: {
-      title: "Yay! Completed",
-      description: null,
-      content: <Completed />,
-    },
+  const _submit = (nextStep) => {
+    const payload = new FormData();
+    payload.append("firstName", data.firstName);
+    payload.append("lastName", data.lastName);
+    payload.append("email", data.email);
+    payload.append("phoneNumber", data.phone);
+    payload.append("image", data.proofPayment[0]);
+    payload.append("bankFrom", data.bankName);
+    payload.append("accountHolder", data.bankHolder);
+    payload.append("idItem", checkout._id);
+    payload.append("duration", checkout.duration);
+    payload.append("bookingStartDate", checkout.date.startDate);
+    payload.append("bookingEndDate", checkout.date.endDate);
+
+    props.submitBooking(payload).then(() => {
+      nextStep();
+    });
   };
 
   if (!checkout)
@@ -87,7 +75,12 @@ const Checkout = (props) => {
           <div className="col-3">
             Pilih Kamar Terlebih Dahulu
             <div>
-              <Button className="btn mt-5" type="link" href="/" isLight>
+              <Button
+                className="btn mt-5"
+                type="button"
+                isLight
+                onClick={() => history.goBack()}
+              >
                 Back
               </Button>
             </div>
@@ -95,6 +88,41 @@ const Checkout = (props) => {
         </div>
       </div>
     );
+
+  const steps = {
+    bookingInformation: {
+      title: "Booking Information",
+      description: "Please fill up the blank fields below",
+      content: (
+        <BookingInformation
+          data={data}
+          checkout={checkout}
+          itemDetails={page[checkout._id]}
+          handleChange={onChange}
+        />
+      ),
+    },
+    payment: {
+      title: "Payment",
+      description: "Kindly follow the instructions below",
+      content: (
+        <Payment
+          data={data}
+          checkout={checkout}
+          itemDetails={page[checkout._id]}
+          handleChange={onChange}
+        />
+      ),
+    },
+    completed: {
+      title: "Yay! Completed",
+      description: null,
+      content: <Completed />,
+    },
+  };
+
+  // console.log(page, data);
+  // console.log(props);
 
   return (
     <>
@@ -133,11 +161,11 @@ const Checkout = (props) => {
                       </Fade>
                     )}
                   <Button
-                    type="link"
-                    href={`/details/${ItemDetails._id}`}
+                    type="button"
                     className="btn"
                     isBlock
                     isLight
+                    onClick={() => history.goBack()}
                   >
                     Cancel
                   </Button>
@@ -156,7 +184,7 @@ const Checkout = (props) => {
                           isBlock
                           isPrimary
                           hasShadow
-                          onClick={nextStep}
+                          onClick={() => _submit(nextStep)}
                         >
                           Continue to Book
                         </Button>
@@ -179,10 +207,10 @@ const Checkout = (props) => {
                   <Button
                     className="btn"
                     type="link"
+                    href="/"
                     isBlock
                     isPrimary
                     hasShadow
-                    href={`/`}
                   >
                     Back to Home
                   </Button>
@@ -198,6 +226,7 @@ const Checkout = (props) => {
 
 const mapStateProps = (state) => ({
   checkout: state.checkout,
+  page: state.page,
 });
 
-export default connect(mapStateProps)(Checkout);
+export default connect(mapStateProps, { submitBooking })(Checkout);

@@ -8,26 +8,28 @@ const PageDetailDescription = ({ data }) => {
         <h4>About The Place</h4>
         {ReactHTMLParser(data.description)}
         <div className="row" style={{ marginTop: 30 }}>
-          {data.features.map((feature, index) => {
-            return (
-              <Fade bottom delay={300 * index} key={`feature-${index + 1}`}>
-                <div className="col-3" style={{ marginBottom: 20 }}>
-                  <figure>
-                    <img
-                      width={38}
-                      src={feature.imageUrl}
-                      alt={`img-${feature.name}`}
-                      className="d-block mb-2"
-                    />
-                  </figure>
-                  <span>{feature.qty}</span>{" "}
-                  <span className="text-gray-500 font-weight-light">
-                    {feature.name}
-                  </span>
-                </div>
-              </Fade>
-            );
-          })}
+          {data.featureId.length === 0
+            ? "Tidak Ada Feature"
+            : data.featureId.map((feature, index) => {
+                return (
+                  <Fade bottom delay={300 * index} key={`feature-${index + 1}`}>
+                    <div className="col-3" style={{ marginBottom: 20 }}>
+                      <figure>
+                        <img
+                          width={38}
+                          src={`${process.env.REACT_APP_HOST}/${feature.imageUrl}`}
+                          alt={`img-${feature.name}`}
+                          className="d-block mb-2"
+                        />
+                      </figure>
+                      <span>{feature.qty}</span>{" "}
+                      <span className="text-gray-500 font-weight-light">
+                        {feature.name}
+                      </span>
+                    </div>
+                  </Fade>
+                );
+              })}
         </div>
       </div>
     </Fade>
