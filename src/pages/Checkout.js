@@ -121,9 +121,6 @@ const Checkout = (props) => {
     },
   };
 
-  // console.log(page, data);
-  // console.log(props);
-
   return (
     <>
       <Header location={location} isCentered />

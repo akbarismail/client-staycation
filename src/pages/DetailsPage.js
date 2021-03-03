@@ -22,10 +22,7 @@ const DetailsPage = (props) => {
     window.scrollTo(0, 0);
 
     if (!page[match.params.id])
-      fetchPage(
-        `${process.env.REACT_APP_HOST}/api/v1/member/detail-page/${match.params.id}`,
-        match.params.id
-      );
+      fetchPage(`/detail-page/${match.params.id}`, match.params.id);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

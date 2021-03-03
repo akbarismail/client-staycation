@@ -19,11 +19,7 @@ const LandingPage = (props) => {
     document.title = "Staycation | Home Page";
     window.scrollTo(0, 0);
 
-    if (!page.landingPage)
-      fetchPage(
-        `${process.env.REACT_APP_HOST}/api/v1/member/landing-page`,
-        "landingPage"
-      );
+    if (!page.landingPage) fetchPage(`/landing-page`, "landingPage");
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
