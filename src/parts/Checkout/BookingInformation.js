@@ -14,6 +14,8 @@ const BookingInformation = ({ data, itemDetails, checkout, handleChange }) => {
                     src={`${process.env.REACT_APP_HOST}/${itemDetails.imageId[0].imageUrl}`}
                     alt={`img-${itemDetails.title}`}
                     className="img-cover"
+                    width={420}
+                    height={270}
                   />
                 </figure>
                 <div className="row align-items-center">
