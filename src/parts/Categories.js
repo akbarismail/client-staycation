@@ -25,7 +25,7 @@ const Categories = ({ data }) => {
                           <span className="font-weight-light">Choice</span>
                         </div>
                       )}
-                      <figure className="img-wrapper" style={{ height: 180 }}>
+                      <figure className="img-wrapper">
                         <img
                           src={
                             item.imageId[0]
@@ -34,6 +34,7 @@ const Categories = ({ data }) => {
                           }
                           alt={`img-${item.name}`}
                           className="img-cover"
+                          style={{ height: 180 }}
                         />
                       </figure>
                       <div className="meta-wrapper">
