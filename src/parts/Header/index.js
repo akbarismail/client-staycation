@@ -1,5 +1,5 @@
-import Button from "components/Button";
-import BrandIcon from "./IconText";
+import { Button } from "components";
+import { IconText } from "parts";
 import Fade from "react-reveal/Fade";
 
 const Header = ({ location, isCentered }) => {
@@ -26,7 +26,7 @@ const Header = ({ location, isCentered }) => {
     <header className="spacing-sm">
       <Fade>
         <nav className="navbar navbar-expand-lg navbar-light container">
-          <BrandIcon />
+          <IconText />
           <div className="collapse navbar-collapse">
             <ul className="navbar-nav ml-auto">
               <li className={`nav-item${getNavLink("/")}`}>

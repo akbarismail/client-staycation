@@ -3,7 +3,7 @@ import { object, func, string } from "prop-types";
 import { DateRange } from "react-date-range";
 
 import IconCalendar from "assets/images/icons/icon-calendar.svg";
-import formatDate from "utils/formatDate";
+import { formatDate } from "utils";
 
 import "./index.scss";
 import "react-date-range/dist/styles.css"; // main style file

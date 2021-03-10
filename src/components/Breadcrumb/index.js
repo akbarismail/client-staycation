@@ -1,4 +1,4 @@
-import Button from "components/Button";
+import { Button } from "components";
 import { array, string } from "prop-types";
 
 const Breadcrumb = ({ className, data }) => {

@@ -1,6 +1,6 @@
 import { render } from "@testing-library/react";
+import { Breadcrumb } from "components";
 import { BrowserRouter as Router } from "react-router-dom";
-import Breadcrumb from "./index";
 
 const setup = () => {
   const breadcrumbList = [

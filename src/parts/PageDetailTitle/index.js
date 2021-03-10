@@ -1,5 +1,5 @@
+import { Breadcrumb } from "components";
 import Fade from "react-reveal/Fade";
-import Breadcrumb from "components/Breadcrumb";
 
 const PageDetailTitle = ({ data, breadcrumb }) => {
   return (

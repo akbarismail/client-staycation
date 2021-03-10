@@ -1,12 +1,7 @@
 import React, { createRef, useEffect } from "react";
 import { connect } from "react-redux";
 
-import Hero from "parts/Hero";
-import MostPicked from "parts/MostPicked";
-import Categories from "parts/Categories";
-import Testimony from "parts/Testimony";
-import Footer from "parts/Footer";
-import Header from "parts/Header";
+import { Hero, MostPicked, Categories, Header, Testimony, Footer } from "parts";
 
 import { fetchPage } from "store/actions/page";
 

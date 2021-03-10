@@ -1,5 +1,5 @@
 import Fade from "react-reveal/Fade";
-import Button from "components/Button";
+import { Button } from "components";
 
 const Categories = ({ data }) => {
   return data.map((category, index1) => {

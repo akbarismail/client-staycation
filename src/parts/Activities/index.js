@@ -1,6 +1,6 @@
 import Fade from "react-reveal/Fade";
 
-import Button from "components/Button";
+import { Button } from "components";
 
 const Activities = ({ data }) => {
   if (data.length === 0) return null;

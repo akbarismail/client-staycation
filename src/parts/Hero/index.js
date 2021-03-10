@@ -3,8 +3,8 @@ import ImageHero_ from "assets/images/img-hero-frame.jpg";
 import IconCities from "assets/images/icons/icon-cities.svg";
 import IconTraveler from "assets/images/icons/icon-traveler.svg";
 import IconTreasure from "assets/images/icons/icon-treasure.svg";
-import Button from "components/Button";
-import formatNumber from "utils/formatNumber";
+import { Button } from "components";
+import { formatNumber } from "utils";
 import Fade from "react-reveal/Fade";
 
 const Hero = ({ refMostPicked, data }) => {

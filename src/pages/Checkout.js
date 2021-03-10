@@ -2,16 +2,16 @@ import { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import Fade from "react-reveal/Fade";
 
-import Header from "parts/Header";
-import BookingInformation from "parts/Checkout/BookingInformation";
-import Payment from "parts/Checkout/Payment";
-import Completed from "parts/Checkout/Completed";
-import Stepper from "components/Stepper";
-import Numbering from "components/Stepper/Numbering";
-import MainContent from "components/Stepper/MainContent";
-import Meta from "components/Stepper/Meta";
-import Controller from "components/Stepper/Controller";
-import Button from "components/Button";
+import { Header, BookingInformation, Payment, Completed } from "parts";
+
+import {
+  Button,
+  Stepper,
+  Numbering,
+  MainContent,
+  Meta,
+  Controller,
+} from "components";
 
 import { submitBooking } from "store/actions/checkout";
 

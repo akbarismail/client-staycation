@@ -3,7 +3,7 @@ import { withRouter } from "react-router-dom";
 import { object, func } from "prop-types";
 import Fade from "react-reveal/Fade";
 
-import Button from "components/Button";
+import { Button } from "components";
 import { InputNumber, InputDate } from "components/Form";
 
 export class BookingForm extends Component {

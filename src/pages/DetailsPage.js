@@ -1,18 +1,19 @@
 import { useEffect } from "react";
 import { connect } from "react-redux";
 
-import BookingForm from "parts/BookingForm";
-import FeatureImage from "parts/FeatureImage";
-import Footer from "parts/Footer";
-import PageDetailDescription from "parts/PageDetailDescription";
-import Testimony from "parts/Testimony";
+import {
+  Header,
+  PageDetailTitle,
+  BookingForm,
+  FeaturedImage,
+  PageDetailDescription,
+  Activities,
+  Testimony,
+  Footer,
+} from "parts";
 
 import { checkoutBooking } from "store/actions/checkout";
 import { fetchPage } from "store/actions/page";
-import Activities from "parts/Activities";
-
-const { default: Header } = require("parts/Header");
-const { default: PageDetailTitle } = require("parts/PageDetailTitle");
 
 const DetailsPage = (props) => {
   const { location, checkoutBooking, page, match, fetchPage } = props;
@@ -42,7 +43,7 @@ const DetailsPage = (props) => {
           breadcrumb={breadcrumbList}
           data={page[match.params.id]}
         />
-        <FeatureImage data={page[match.params.id].imageId} />
+        <FeaturedImage data={page[match.params.id].imageId} />
         <section className="container">
           <div className="row">
             <div className="col-7 pr-5">

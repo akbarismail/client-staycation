@@ -1,5 +1,5 @@
-const { default: Button } = require("components/Button");
-const { default: IconText } = require("./IconText");
+import { Button } from "components";
+import { IconText } from "parts";
 
 const Footer = () => {
   return (

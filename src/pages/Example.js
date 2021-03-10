@@ -1,4 +1,4 @@
-const { default: Breadcrumb } = require("components/Breadcrumb");
+const { Breadcrumb } = require("components");
 
 const Example = () => {
   const breadcrumbList = [

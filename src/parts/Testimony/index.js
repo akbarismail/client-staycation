@@ -1,7 +1,7 @@
 import Fade from "react-reveal/Fade";
 import TestimonyFrame from "assets/images/testimonial-landingpages-frame.jpg";
-import Button from "components/Button";
-import Star from "components/Star";
+import { Button } from "components";
+import { Star } from "components";
 
 const Testimony = ({ data }) => {
   return (
